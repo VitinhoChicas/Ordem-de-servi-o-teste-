@@ -1,0 +1,3505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Formulário, Assinatura e PDF</title>
+    <style>
+        body, html {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgb(216, 216, 216); 
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(216, 216, 216);
+            color:#004aad;    
+            width: 80%; /* A div ocupa 80% da largura do contêiner */
+            max-width: 300px; /* Define uma largura máxima */
+            margin: auto;        
+        }
+
+        .cabecalho {
+            
+            align-items: center;
+            justify-content: center;
+            display: flex;
+           
+            
+        }
+
+        .logo {
+            width: 230px;
+            height: 230px;
+        }
+
+        .Sequencial{
+            height: 30px;
+            
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .Nsequencial {
+            width: 80px;
+            color: #004aad;
+            border: 2px solid #004aad;
+            border-radius: 20px;
+            outline: none;
+            text-align: center;
+        }
+
+        .Nsequencial:focus {
+            color: #004aad;
+            border: 3px solid #004aad;
+            border-radius: 20px;
+            box-shadow: none;
+        }
+
+        .ChegadaSaida {
+           
+            height: 50px;
+            width: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .DivChegada, .DivSaida {
+            height: 50px;
+            width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .DivChegada {
+            margin-right: 40px;
+        }
+
+
+
+        .tabelaCliente{
+            border:solid rgb(0, 0, 0) 2px;
+            height: 200px;
+            width: 300px;
+            margin-top: 10px;
+            color:#004aad;
+        }
+
+        .trc{
+            border:solid rgb(199, 0, 0) 2px;
+            background-color:rgb(216, 216, 216);
+            text-align: center;
+        }
+
+        .tdc{
+            border:solid rgba(255, 255, 255, 0) 2px;
+            
+        }
+
+        .thc{
+            border:solid black 2px;
+            color:#fcd824;
+            background-color:#004aad;
+            border:solid rgb(0, 0, 0) 2px;
+        }
+
+
+
+
+        .Dadosclientes {
+            
+            height: 180px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .divcliente {
+            background-color: #004aad;
+            color: #fcd824;
+            height: 30px;
+            width: 390px;
+            text-align: center;
+            border-radius: 50px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid black;
+        }
+
+        .Pcliente {
+            font-size: 23px;
+        }
+
+        .DivNomeEmpresa {
+            
+            height: 30px;
+            width: 400px;
+            align-items: end;
+            display: flex;
+            justify-content: center;
+        }
+
+        .NomeEmpresa {
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .EndCep {
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Endereco {
+            width: 170px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .CEP {
+            width: 90px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .BairroCidade {
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Bairro {
+            width: 170px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Cidade {
+            width: 90px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .CNPJInscricao {
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .cnpj {
+            width: 130px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Inscricao {
+            width: 120px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .TelefoneContato{
+            background-color: #000000;
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            position: static;
+        }
+
+        .Contato{
+            width:160px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+            justify-content: center;
+        }
+
+     
+
+        .Telefone {
+            width: 97px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .DivEmail {
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .Email {
+            width: 250px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .MaquinaBalanca {
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+     
+        .DivMaquina, .DivBalanca {
+            
+            height: 20px;
+            width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .MarcaModelo{
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Marca{
+            width: 150px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Modelo{
+            width: 125px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .SeriePort{
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Serie{
+            width: 150px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Port{
+            width: 125px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .CapDvIv{
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Cap{
+            width: 95px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Dv{
+            width: 95px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Iv{
+            width: 95px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .PatrSetor{
+            
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Setor{
+            width: 150px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .Patr{
+            width: 150px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .SeloLacreRLacreA{
+           
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .Selo, .LacreR, .LacreA{
+            width: 130px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+      
+.TipoPDimP{
+           
+            height: 25px;
+            width: 400px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .TipoP{
+            width: 140px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .DimP{
+            width: 140px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .CapCelula{
+            width: 140px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .QuantCelula{
+            width: 140px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .ModCelula{
+            width: 140px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+       
+        
+        .OBS{
+        border:solid 1px black;
+        height: 60px;
+        width: 380px;
+        border-radius:20px;
+        }
+
+        .DescricacaoServico{
+        height:1200px;
+        width: 400px;
+        
+        display: flex;
+        align-items:center;
+        flex-direction:column;
+        justify-content: center;
+
+        }
+
+        .Div1, .Div2, .Div3, .Div4, .Div5, .Div6, .Div7, .Div8, .Div9, .Div10{
+        height:500px;
+        width: 400px;
+        
+        display: flex;
+        align-items:center;
+        flex-direction:row;
+        
+        justify-content:space-between;
+
+        }
+
+        .DivValor{
+            
+            width: 95px;
+            height: 100px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+
+        .DivQTD{
+            
+            width: 80px;
+            height: 100px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .DivDescr{
+           
+            width: 210px;
+            height: 100px;
+            margin-top: 10px;
+            text-align: center;
+            display: flex;
+            align-items:center;
+            flex-direction:column;
+            margin-top:5px;
+       
+        }
+
+        .Descr{
+            width: 200px;
+            height: 60px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .QTD {
+            width: 70px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+
+        .Valor{
+            width: 80px;
+            border-radius: 20px;
+            border: solid 1px black;
+            text-align: center;
+        }
+
+        .ValorViagem{
+            text-align: center;
+            height: 400px;
+            width: 400px;
+
+        }
+
+        .tabela{
+            background-color:#fcd824;
+            border:solid rgb(0, 0, 0) 2px;
+            height: 200px;
+            width: 400px;
+            margin-top: 10px;
+            color:#fcd824;
+        }
+
+        tr{
+            border:solid black 2px;
+            background-color:#004aad;
+            text-align: center;
+        }
+
+        td{
+            border:solid black 2px;
+            
+        }
+
+        th{
+            border:solid black 2px;
+            
+        }
+        
+        .KmQTD, .HRQTD, .MDQTD{
+            width: 90px;
+            border-radius: 20px;
+            border:solid black 3px;
+            text-align: center;
+        }
+
+
+        .KmVLUnitario, .HRVLUnitario, .MDVLUnitario{
+            width: 90px;
+            border-radius: 20px;
+            border:solid black 2px;
+            text-align: center;
+        }
+
+        .KmVLTotal, .HRVLTotal, .MDVLTotal{
+            width: 90px;
+            border-radius: 20px;
+            border:solid black 2px;
+            text-align: center;
+        }
+
+    .DivValorTotal{
+     
+            height: 55px;
+            width: 390px;
+            background-color: #004aad;
+            border: solid #fcd824 3px;
+            text-align: center;
+            display: flex;
+            align-items:center;
+            flex-direction:column;
+            color: #fcd824;
+    }
+
+    .V1{
+        margin-top: 10px;
+        background-color: rgb(0, 0, 0);
+        height: 65px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+   .LabelValorTotal{
+    margin-top: 2px;
+   }
+
+    
+
+    .ValorTotal{
+             width: 150px;
+            border-radius: 20px;
+            border: solid 3px rgb(0, 0, 0);
+            text-align: center;
+            margin-top: 2px;
+    }
+
+    .InputHR, .dataa {
+            border-radius: 20px;
+            border: 2px solid black;
+        }
+
+        #signature-pad {
+            border: 3px solid #000000;
+            background-color: white;
+            color:#004aad;
+            width: 400px;
+            max-width: 600px;
+            height:300px;
+            margin-top: 10px;
+        }
+
+
+
+        .AssCliente{
+           height: 360px;
+           width: 400px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+       .divAssCliente{
+         
+          margin-top: 20px;
+           background-color: #004aad;
+           color: #fcd824;
+           height: 30px;
+           width: 390px;
+           text-align: center;
+           border-radius: 50px;
+           justify-content: center;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           border: 3px solid black;
+       }
+
+       .PAsscliente {
+            font-size: 23px;
+        }
+
+       .BotaoLimparAssCliente{
+        background-color: #000000;
+        color: white;
+       }
+
+       .BotaoLimparAssCliente:active{
+        background-color: #004aad;
+        color: #fcd824;
+        border-radius: 20px;
+       }
+  
+        #saved-signature {
+            margin-top: 20px;
+            
+        }
+
+
+        .AssTecnico{
+            margin-top: 40px;
+           height: 360px;
+           width: 400px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+
+        .divAssTecnico{
+           background-color: #004aad;
+           color: #fcd824;
+           height: 30px;
+           width: 390px;
+           text-align: center;
+           border-radius: 50px;
+           justify-content: center;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           border: 3px solid black;
+           padding-top: 20;
+       }
+
+       #signature-pad-technician {
+            border: 3px solid #000000;
+            background-color: white;
+            color:#004aad;
+            width: 400px;
+            max-width: 600px;
+            height: 300px;
+            margin-top: 10px;
+        }
+
+       .PAssTecnico {
+            font-size: 23px;
+        }
+
+       .BotaoLimparAssTecnico{
+        background-color: #000000;
+        color: white;
+        
+       }
+
+       .BotaoLimparAssTecnico:active{
+        background-color: #004aad;
+        color: #fcd824;
+        border-radius: 20px;
+      
+       }
+  
+
+    
+
+       .NomeTecnico{
+        margin-top: 10px;
+           width: 250px;
+           border-radius: 20px;
+           border: solid 1px black;
+           text-align: center;
+       }
+
+       .RGTecnico{
+        margin-top: 10px;
+        width: 180px;
+           border-radius: 20px;
+           border: solid 1px black;
+           text-align: center;
+       }
+
+       .GerarVisualizarPDF{
+        
+        width: 400px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        margin-top: 100px;
+       }
+
+       .GerarPDF{
+        color:#fcd824;
+        border: solid 5px #004aad ;
+        background-color: #000000;
+       }
+
+       .GerarPDF:active{
+        color:#fcd824;
+        border: solid 5px #004aad ;
+        background-color: #000000;
+        border-radius: 20px;
+       }
+
+       .VisualizarPDF{
+        color:#fcd824;
+        border: solid 5px #004aad ;
+        background-color: #000000;
+       }
+
+       .VisualizarPDF:active{
+        color:#fcd824;
+        border: solid 5px #004aad ;
+        background-color: #000000;
+        border-radius: 20px;
+       }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cabecalho">
+            <img src="Logo.png" class="logo">
+        </div>
+
+        <div class="Sequencial">
+            <label for="labelSequencial">Sequencial:
+                <input type="text" id="NSequencial" name="NSequencial" maxlength="4" class="Nsequencial" autocomplete="off" required>
+            </label>
+        </div>
+
+
+
+
+        <table class="tabelaCliente">
+            <tr class="trc">
+                <th class="thc"  colspan="2">DADOS CLIENTES</th>
+            </tr>
+            <tr class="trc">
+                <td class="tdc"><b>Empresa:</b></td>
+                <td class="tdc">
+                    <input type="text" id="NomeEmpresa" maxlength="60" class="NomeEmpresa" autocomplete="off" required>
+                </td>
+                
+                </tr>
+                <tr class="trc">
+                    <td class="tdc"><b>Endereço:</b></td>
+                    <td class="tdc">
+                        <input type="text" name="Endereco" maxlength="43" id="Endereco" class="Endereco"  autocomplete="off" required>
+                         </td>
+                    
+                </tr>
+                    <tr class="trc">
+                        <td class="tdc"><b>Contato:</b></td>
+                        <td class="tdc">
+                            <input type="text" class="Contato" autocomplete="off" maxlength="37" id="Contato" name="Contato">
+                        </td>
+                        
+                    </tr>
+        
+        
+                    <tr class="trc">
+                        <td class="tdc"><b>CEP:</b></td>
+                        <td class="tdc">
+                            <input type="text" id="CEP" name="CEP" class="CEP" maxlength="9" autocomplete="off" onkeyup="formatarNumero(this)" required>
+                        </td>
+                        
+                    </tr>
+        
+                    <tr class="trc">
+                        <td class="tdc"><b>Bairro:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="Bairro" id="Bairro"  maxlength="33" class="Bairro"  autocomplete="off" required>
+                        
+                        </td>
+                    </tr>
+                        <tr class="trc">
+                            <td class="tdc"><b>Cidade:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Cidade" id="Cidade"  maxlength="22" class="Cidade" autocomplete="off" required> 
+                        
+                            </td>
+                            
+                        </tr>
+            
+                        <tr class="trc">
+                            <td class="tdc"><b>I.E.:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Inscricao" id="Inscricao" maxlength="14" class="Inscricao" autocomplete="off" required> 
+                      
+                            </td>
+                            
+                        </tr>
+            
+                        <tr class="trc">
+                            <td class="tdc"><b>CNPJ:</b></td>
+                            <td class="tdc">
+                                <input type="text" id="cnpj" name="cnpj" class="cnpj" maxlength="18" autocomplete="off" yy oninput="formatarCNPJ(this)" maxlength="18" required>
+        
+                        </td>
+                        </tr>
+                        <tr class="trc">
+                            <td class="tdc"><b>Telefone:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Telefone" id="Telefone" class="Telefone"   autocomplete="off" oninput="formatarTelefone(this)" maxlength="15" required>
+                        
+                            </td>
+                            
+                        </tr>
+            
+                        <tr class="trc">
+                            <td class="tdc"><b>E-mail:</b></td>
+                            <td class="tdc">
+                                <input type="email" id="Email" name="Email" maxlength="50" class="Email" autocomplete="off">
+                      
+                            </td>
+                        
+                    </tr>
+        </table>
+
+        <table class="tabelaCliente">
+            <tr class="trc">
+                <th class="thc"  colspan="2">DESCRIÇÃO DO INSTRUMENTO</th>
+            </tr>
+            <tr class="trc">
+                <td class="tdc"><b>Maquina:</b>
+                    <input type="checkbox" id="Maquina" name="Maquina" class="Maquina" autocomplete="off"/> 
+                </td>
+               
+                       
+                
+                <td class="tdc"><b>Balança:</b>
+                <input type="checkbox" id="Balanca" name="Balanca" class="Balanca" autocomplete="off"/>
+                </td>
+                
+                    
+               
+                
+                </tr>
+                <tr class="trc">
+                    <td class="tdc"><b>Marca:</b></td>
+                    <td class="tdc">
+                        <input type="text" name="Marca" maxlength="19" id="Marca" class="Marca" autocomplete="off"required>    
+                    </td>
+                    
+                    </tr>
+                    <tr class="trc">
+                        <td class="tdc"><b>Modelo:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="Modelo" maxlength="16" id="Modelo" class="Modelo"autocomplete="off" required>
+                        </td>
+                        
+                    </tr>
+        
+        
+                    <tr class="trc">
+                        <td class="tdc"><b>Serie:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="Serie" maxlength="14" id="Serie" class="Serie"  autocomplete="off" required>    
+                        </td>
+                        
+                    </tr>
+        
+                    <tr class="trc">
+                        <td class="tdc"><b>Port:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="Port" maxlength="11" id="Port" class="Port" autocomplete="off" required> 
+                        </td>
+                    </tr>
+                    <tr class="trc">
+                        <td class="tdc"><b>Cap:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="Cap" maxlength="7" id="Cap" class="Cap" autocomplete="off" required>
+                        
+                        </td>
+                    </tr>
+                        <tr class="trc">
+                            <td class="tdc"><b>Dv:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Dv" maxlength="7" id="Dv" class="Dv" autocomplete="off" required> 
+                            </td>
+                            
+                        </tr>
+            
+                        <tr class="trc">
+                            <td class="tdc"><b>Iv:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Iv" id="Iv"  maxlength="10" class="Iv" autocomplete="off" required> 
+                            </td>
+                            
+                        </tr>
+            
+                        <tr class="trc">
+                            <td class="tdc"><b>Setor:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Setor" id="Setor" maxlength="26" class="Setor" autocomplete="off" required> 
+                        </td>
+                    </tr>
+                        <tr class="trc">
+                            <td class="tdc"><b>Patr:</b></td>
+                            <td class="tdc">
+                                <input type="text" name="Patr" maxlength="10" id="Patr" class="Patr" autocomplete="off" required>
+                            </td>
+                            
+                        </tr>
+            
+                    <tr class="trc">
+                            <td class="tdc"><b>Selo</b></td>
+                            <td class="tdc">
+                            
+                                    <input type="text" name="Selo"  maxlength="9" id="Selo" class="Selo" autocomplete="off" required>
+                            </td>  
+                    </tr>
+        
+                    <tr class="trc">
+                        <td class="tdc"><b>Lacre R.:</b></td>
+                        <td class="tdc">
+                        
+            <input type="text" name="LacreR"  maxlength="9" id="LacreR" class="LacreR" autocomplete="off" required> 
+                        </td>  
+                </tr>
+        
+                <tr class="trc">
+                    <td class="tdc"><b>Tipo P.:</b></td>
+                    <td class="tdc">
+                    
+                        <input type="text" maxlength="10" name="TipoP" id="TipoP" class="TipoP" autocomplete="off" required> 
+                    </td>  
+            </tr>
+        
+            <tr class="trc">
+
+                
+                <td class="tdc"><b>Dim P.:</b></td>
+                <td class="tdc">
+                
+                    <input type="text" maxlength="10" name="DimP" id="DimP" class="DimP" autocomplete="off"  required>
+                 </td>  
+                </tr>
+
+                <tr class="trc">
+
+                
+                    <td class="tdc"><b>Cap. Celula:</b></td>
+                    <td class="tdc">
+                    
+                        <input type="text" name="CapCelula" id="CapCelula" maxlength="10" class="CapCelula" autocomplete="off" required>
+                   
+                    </td>  
+                    </tr>
+
+
+                 <tr class="trc">
+                    <td class="tdc"><b>Quant. Celula:</b></td>
+                    <td class="tdc">
+                    
+                        <input type="text" name="QuantCelula" id="QuantCelula" maxlength="10" class="QuantCelula" autocomplete="off" required>
+                      </td> 
+                    </tr> 
+        
+                      <tr class="trc">
+                        <td class="tdc"><b>Mod. Celula:</b></td>
+                        <td class="tdc">
+                            <input type="text" name="ModCelula" id="ModCelula" maxlength="10" class="ModCelula" autocomplete="off" required>
+                           
+                        </td>  
+                    </tr>
+        
+        </table>
+              
+            <label class="LabelObservacao">Obseração:</label>
+            <textarea id="OBS" name="OBS"  maxlength="298" class="OBS"required autocomplete="off"></textarea>
+
+ 
+
+        <div class="DescricacaoServico">
+            <div class="Div1">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" name="1QTD" maxlength="6" id="1QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="1Descr"  maxlength="43" name="1Descr"  class="Descr"required autocomplete="off"></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="1ValorU" id="1ValorU" maxlength="8" class="Valor" autocomplete="off" required>        
+                            
+                        <!--
+                            <label class="LabelValor">Total: </label>
+                            <input type="text" name="1Valor" id="1Valor" maxlength="8" class="Valor" autocomplete="off" required>
+                        -->
+                </div>
+            </div>
+
+            <div class="Div2">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text"  maxlength="5" name="2QTD" id="2QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="2Descr" name="2Descr"  maxlength="43"  class="Descr" autocomplete="off" required></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="2ValorU" id="2ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="2Valor" id="2Valor" maxlength="8" class="Valor"  autocomplete="off" required>  
+                -->
+             </div>
+            </div>
+
+
+            <div class="Div3">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5" name="3QTD" id="3QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="3Descr" name="3Descr"  maxlength="43" class="Descr" autocomplete="off" required></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="3ValorU" id="3ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--    
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="3Valor" id="3Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->
+
+                </div>
+            </div>
+
+            <div class="Div4">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5"  name="4QTD" id="4QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="4Descr" name="4Descr"  maxlength="43" class="Descr" autocomplete="off" required></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="4ValorU" id="4ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--  
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="4Valor" id="4Valor" maxlength="8" class="Valor"  autocomplete="off" required> 
+                -->    
+                </div>
+            </div>
+
+            <div class="Div5">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5" name="5QTD" id="5QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="5Descr" name="5Descr"  maxlength="43"  class="Descr"required autocomplete="off" ></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="5ValorU" id="5ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                    
+                <!--            
+                    <label class="LabelValor">Total: </label>
+                    <input type="text"   name="5Valor" id="5Valor"  maxlength="8" class="Valor" autocomplete="off" required> 
+                -->    
+            </div>
+            </div>
+
+            <div class="Div6">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5" name="6QTD" id="6QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="6Descr" name="6Descr"  maxlength="43" class="Descr"required autocomplete="off" ></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="6ValorU" id="6ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--    
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="6Valor" id="6Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->
+
+                </div>
+            </div>
+
+            <div class="Div7">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5" name="7QTD" id="7QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="7Descr" name="7Descr"  maxlength="43" class="Descr"required autocomplete="off" ></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="7ValorU" id="7ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--            
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="7Valor" id="7Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->    
+                </div>
+            </div>
+
+            <div class="Div8">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label> 
+                        <input type="text"  maxlength="5" name="8QTD" id="8QTD" class="QTD"  autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="8Descr" name="8Descr"   maxlength="43" class="Descr"required autocomplete="off"></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="8ValorU" id="8ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--            
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="8Valor" id="8Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->    
+                </div>
+            </div>
+
+            <div class="Div9">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text" maxlength="5" name="9QTD" id="9QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="9Descr" name="9Descr"  maxlength="43" class="Descr"required autocomplete="off"></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="9ValorU" id="9ValorU" maxlength="8" class="Valor"  autocomplete="off" required>
+                <!--            
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="9Valor" id="9Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->    
+                </div>
+            </div>
+
+
+            <div class="Div10">
+                <div class="DivQTD">
+                    <label class="LabelQTD">Quantidade</label>
+                        <input type="text"  maxlength="5" name="10QTD" id="10QTD" class="QTD" autocomplete="off" required>
+                    </div>
+                   
+                        <div class="DivDescr">
+                            <label class="LabelDescr">Descrição:</label>
+                            <textarea id="10Descr" name="10Descr"  maxlength="43" class="Descr" autocomplete="off" required></textarea>                 
+                    </div>
+                        <div class="DivValor">
+                            <label class="LabelValor">Valor Unit.:</label>
+                            <input type="text" name="10ValorU" id="10ValorU" maxlength="8" class="Valor" autocomplete="off" required>
+                <!--            
+                    <label class="LabelValor">Total: </label>
+                    <input type="text" name="10Valor" id="10Valor" maxlength="8" class="Valor" autocomplete="off" required> 
+                -->    
+                </div>
+            </div>
+
+        </div>
+
+
+    <div class="ValorViagem">
+
+        <div class="ChegadaSaida">
+            <div class="DivChegada">
+                <label for="labelHrChegada">Horário de chegada</label>
+                <input type="time" id="HRchegada" name="HRchegada" min="09:00" max="18:00" class="InputHR"  autocomplete="off" required />
+            </div>
+            <div class="DivSaida">
+                <label for="labelHrSaida">Horário de saída</label>
+                <input type="time" id="HRsaida" name="HRsaida" min="09:00" max="18:00" class="InputHR" autocomplete="off" required />
+            </div>
+        </div>
+
+        <label for="Data">Data:
+            <input id="data" type="date" class="dataa" required autocomplete="off"/>
+        </label>
+
+
+        <table class="tabela">
+            <t>
+                <th>ITEM</th>
+                <th>QUANTIDADE</th>
+                <th>VR UNITARIO</th>
+          <!--  <th>VALOR TOTAL</th> -->
+               
+            </tr>
+            <tr>
+                <td><b>Km Rodado Carro</b></td>
+                <td>  <input type="text" name="KmQTD" id="KmQTD" class="KmQTD" maxlength="7" required autocomplete="off">  </td>
+                <td>  <input type="text" name="KmVLUnitario" id="KmVLUnitario" maxlength="7" class="KmVLUnitario" required autocomplete="off">  </td> </td>
+            <!--    <td>  <input type="text" name="KmVLTotal" id="KmVLTotal" maxlength="8"  class="KmVLTotal" required autocomplete="off">  </td> </td></td>  -->
+            </tr>
+            <tr>
+                <td><b>Hora Técnica</b></td>
+                <td><input type="text" name="HRQTD" id="HRQTD" class="HRQTD" maxlength="7" required autocomplete="off">  </td></td>
+                <td><input type="text" name="HRVLUnitario" id="HRVLUnitario" maxlength="7" class="HRVLUnitario" required autocomplete="off"></td>
+            <!--  <td><input type="text" name="HRVLTotal" id="HRVLTotal" maxlength="8" class="HRVLTotal" required autocomplete="off"></td> -->
+            </tr>
+
+            <tr>
+                <td><b>Mão de obra</b></td>
+                <td><input type="text" name="MDQTD" id="MDQTD" class="MDQTD" maxlength="8" required autocomplete="off" >  </td></td>
+                <td><input type="text" name="MDVLUnitario" id="MDVLUnitario" maxlength="7" class="MDVLUnitario" required autocomplete="off"></td>
+            <!--  <td><input type="text" name="MDVLTotal" id="MDVLTotal" maxlength="8" class="MDVLTotal" required autocomplete="off"></td> -->
+            </tr>
+            
+
+
+        </table>
+
+
+      
+<!--
+    <div class="V1">
+        <Div class="DivValorTotal">
+            <label class="LabelValorTotal">Valor Total Do Serviço</label>
+            <input type="text" name="ValorTotal" id="ValorTotal" maxlength="18" class="ValorTotal" required autocomplete="off"></td>    
+        </Div>
+    </div>
+
+    </div>
+-->
+
+    <div class="AssCliente">
+        <div class="divAssCliente">
+            <p class="PAsscliente">Assinatura do Cliente</p>
+        </div>
+    
+        <div class="signature-container">
+            <canvas id="signature-pad"></canvas>
+            <button class="BotaoLimparAssCliente" id="clear">Limpar</button>
+        </div>
+    </div>
+    
+    <div class="AssTecnico">
+        <div class="divAssTecnico">
+            <p class="PAssTecnico">Assinatura do Técnico</p>
+        </div>
+    
+    <!--
+        <div class="DivNomeTecnico">
+            <label class="LabelNomeTecnico">Nome Técnico:
+                <input type="text" name="NomeTecnico" id="NomeTecnico" class="NomeTecnico" autocomplete="off" required>
+            </label>
+        </div>
+    
+        <div class="DivRGTecnico">
+            <label class="LabelRGTecnico">RG Técnico:
+                <input type="text" name="RGTecnico" id="RGTecnico" class="RGTecnico" autocomplete="off" required>
+            </label>
+        </div>
+    -->
+        <div class="signature-container">
+            <canvas id="signature-pad-technician"></canvas>
+            <button class="BotaoLimparAssTecnico" id="clear-technician">Limpar</button>
+        </div>
+    </div>
+    
+    <div class="GerarVisualizarPDF">
+        <button class="GerarPDF" id="generate-pdf">Gerar PDF</button>
+        <button class="VisualizarPDF" id="preview-pdf">Visualizar PDF</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+
+        //------------------- Seleção de checkbox
+    function getCheckboxValues() {
+        const maquinaChecked = document.getElementById('Maquina').checked;
+        const balancaChecked = document.getElementById('Balanca').checked;
+    
+        return {
+            maquina: maquinaChecked,
+            balanca: balancaChecked
+    };
+}
+
+
+
+        // Função para obter as coordenadas do evento em relação ao canvas (funciona para qualquer canvas)
+        function getOffset(e, canvas) {
+            const rect = canvas.getBoundingClientRect();
+            if (e.touches) {
+                // Para eventos de toque
+                return {
+                    x: e.touches[0].clientX - rect.left,
+                    y: e.touches[0].clientY - rect.top
+                };
+            } else {
+                // Para eventos de mouse
+                return {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            }
+        }
+
+        //------------------------------------------------------- Tratamento do CEP
+        function formatarNumero(campo) {
+    // Remove todos os caracteres que não são números
+    let LabelCEP = campo.value.replace(/\D/g, '');
+
+    // Limita a entrada a no máximo 8 dígitos
+    if (LabelCEP.length > 8) {
+        LabelCEP = LabelCEP.substring(0, 8);
+    }
+
+    // Adiciona o hífen após o quinto dígito
+    if (LabelCEP.length > 5) {
+        LabelCEP = LabelCEP.substring(0, 5) + '-' + LabelCEP.substring(5);
+    }
+
+    // Atualiza o valor no campo
+    campo.value = LabelCEP;
+  }
+      
+       //-----------------------------------------------------------------Tratamento do CNPJ
+      function formatarCNPJ(campo) {
+  // Remove todos os caracteres que não são números
+  let LabelCNPJ = campo.value.replace(/\D/g, '');
+
+  // Formata o CNPJ para o padrão 99.999.999/9999-99
+  if (LabelCNPJ.length <= 14) {
+    LabelCNPJ = LabelCNPJ.replace(/(\d{2})(\d)/, '$1.$2'); // Adiciona o primeiro ponto
+    LabelCNPJ = LabelCNPJ.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o segundo ponto
+    LabelCNPJ = LabelCNPJ.replace(/(\d{3})(\d)/, '$1/$2'); // Adiciona a barra
+    LabelCNPJ= LabelCNPJ.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
+  }
+
+  // Limita a entrada a 18 caracteres (incluindo formatação)
+  if (LabelCNPJ.length > 18) {
+    LabelCNPJ = LabelCNPJ.substring(0, 18);
+  }
+
+  // Atualiza o valor no campo
+  campo.value = LabelCNPJ;
+}
+
+
+
+//------------------------------------------------------Tratamento do TELEFONE
+function formatarTelefone(campo) {
+  // Remove todos os caracteres que não são números
+  let LabelTelefone = campo.value.replace(/\D/g, '');
+
+  // Formata o telefone para o padrão (99) 99999-9999
+  if (LabelTelefone.length <= 11) {
+    // Adiciona os parênteses e o espaço
+    LabelTelefone = LabelTelefone.replace(/^(\d{2})(\d)/, '($1) $2'); // (99) 9
+    // Adiciona o hífen
+    LabelTelefone = LabelTelefone.replace(/(\d{5})(\d)/, '$1-$2'); // (99) 99999-9
+  }
+
+  // Limita a entrada a 15 caracteres (incluindo formatação)
+  if (LabelTelefone.length > 15) {
+    LabelTelefone = LabelTelefone.substring(0, 15);
+  }
+
+  // Atualiza o valor no campo
+  campo.value = LabelTelefone;
+}
+
+
+
+
+
+//-------------------------------------Funções e eventos para a assinatura do cliente
+        const canvasClient = document.getElementById('signature-pad');
+        const ctxClient = canvasClient.getContext('2d');
+        let isDrawingClient = false;
+        let lastXClient = 0;
+        let lastYClient = 0;
+    
+        canvasClient.width = canvasClient.offsetWidth;
+        canvasClient.height = canvasClient.offsetHeight;
+    
+        function startDrawingClient(e) {
+            e.preventDefault();
+            isDrawingClient = true;
+            const offset = getOffset(e, canvasClient);
+            [lastXClient, lastYClient] = [offset.x, offset.y];
+        }
+    
+        function drawClient(e) {
+            e.preventDefault();
+            if (!isDrawingClient) return;
+            const offset = getOffset(e, canvasClient);
+            ctxClient.beginPath();
+            ctxClient.moveTo(lastXClient, lastYClient);
+            ctxClient.lineTo(offset.x, offset.y);
+            ctxClient.stroke();
+            [lastXClient, lastYClient] = [offset.x, offset.y];
+        }
+    
+        function stopDrawingClient() {
+            isDrawingClient = false;
+        }
+    
+        function clearCanvasClient() {
+            ctxClient.clearRect(0, 0, canvasClient.width, canvasClient.height);
+        }
+    
+        function getSignatureDataURLClient() {
+            return canvasClient.toDataURL('image/png');
+        }
+    
+        // Add event listeners for mouse and touch events (cliente)
+        canvasClient.addEventListener('mousedown', startDrawingClient);
+        canvasClient.addEventListener('mousemove', drawClient);
+        canvasClient.addEventListener('mouseup', stopDrawingClient);
+        canvasClient.addEventListener('mouseout', stopDrawingClient);
+        canvasClient.addEventListener('touchstart', startDrawingClient);
+        canvasClient.addEventListener('touchmove', drawClient);
+        canvasClient.addEventListener('touchend', stopDrawingClient);
+        canvasClient.addEventListener('touchcancel', stopDrawingClient);
+        document.getElementById('clear').addEventListener('click', clearCanvasClient);
+     
+        //----------------------------------------------Deixar a assinatura mais escura
+
+        function drawClient(e) {
+    e.preventDefault();
+    if (!isDrawingClient) return;
+    const offset = getOffset(e, canvasClient);
+    ctxClient.beginPath();
+    ctxClient.moveTo(lastXClient, lastYClient);
+    ctxClient.lineTo(offset.x, offset.y);
+    
+    // Ajusta a espessura da linha
+    ctxClient.lineWidth = 2.5;  
+    
+    // Define a cor da linha 
+    ctxClient.strokeStyle = '#000000'; 
+    
+    ctxClient.stroke();
+    [lastXClient, lastYClient] = [offset.x, offset.y];
+}
+//-----------------------------------------------------------------------------------------------
+    
+
+        // Funções e eventos para a assinatura do técnico (mesma lógica da assinatura do cliente)
+        const canvasTechnician = document.getElementById('signature-pad-technician');
+        const ctxTechnician = canvasTechnician.getContext('2d');
+        let isDrawingTechnician = false;
+        let lastXTechnician = 0;
+        let lastYTechnician = 0;
+    
+        canvasTechnician.width = canvasTechnician.offsetWidth;
+        canvasTechnician.height = canvasTechnician.offsetHeight;
+    
+        function startDrawingTechnician(e) {
+            e.preventDefault();
+            isDrawingTechnician = true;
+            const offset = getOffset(e, canvasTechnician);
+            [lastXTechnician, lastYTechnician] = [offset.x, offset.y];
+        }
+    
+        function drawTechnician(e) {
+            e.preventDefault();
+            if (!isDrawingTechnician) return;
+            const offset = getOffset(e, canvasTechnician);
+            ctxTechnician.beginPath();
+            ctxTechnician.moveTo(lastXTechnician, lastYTechnician);
+            ctxTechnician.lineTo(offset.x, offset.y);
+            ctxTechnician.stroke();
+            [lastXTechnician, lastYTechnician] = [offset.x, offset.y];
+        }
+    
+        function stopDrawingTechnician() {
+            isDrawingTechnician = false;
+        }
+    
+        function clearCanvasTechnician() {
+            ctxTechnician.clearRect(0, 0, canvasTechnician.width, canvasTechnician.height);
+        }
+    
+        function getSignatureDataURLTechnician() {
+            return canvasTechnician.toDataURL('image/png');
+        }
+    
+        
+        canvasTechnician.addEventListener('mousedown', startDrawingTechnician);
+        canvasTechnician.addEventListener('mousemove', drawTechnician);
+        canvasTechnician.addEventListener('mouseup', stopDrawingTechnician);
+        canvasTechnician.addEventListener('mouseout', stopDrawingTechnician);
+        canvasTechnician.addEventListener('touchstart', startDrawingTechnician);
+        canvasTechnician.addEventListener('touchmove', drawTechnician);
+        canvasTechnician.addEventListener('touchend', stopDrawingTechnician);
+        canvasTechnician.addEventListener('touchcancel', stopDrawingTechnician);
+        document.getElementById('clear-technician').addEventListener('click', clearCanvasTechnician);
+
+
+        //---------------------------------------  Deixar a assinatura mais escura
+        function drawTechnician(e) {
+    e.preventDefault();
+    if (!isDrawingTechnician) return;
+    const offset = getOffset(e, canvasTechnician);
+    ctxTechnician.beginPath();
+    ctxTechnician.moveTo(lastXTechnician, lastYTechnician);
+    ctxTechnician.lineTo(offset.x, offset.y);
+    
+    // Ajusta a espessura da linha
+    ctxTechnician.lineWidth = 2.5; 
+    
+    // Define a cor da linha 
+    ctxTechnician.strokeStyle = '#000000'; 
+    
+    ctxTechnician.stroke();
+    [lastXTechnician, lastYTechnician] = [offset.x, offset.y];
+}
+
+    
+     //--------------------------------------------------- Função de geração de PDF 
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+    
+
+
+            //----------------- Adc as imagens 
+            const imageURL = 'Azul 2.png'; 
+            const iconeEmail = 'e-mail.jpg';
+            const iconeSkype = 'Skype.png';
+
+/*
+                // Define a cor de preenchimento (RGB)
+                doc.setFillColor(240, 240, 0); // Cor cinza claro
+
+                // Desenha o retângulo arredondado com preenchimento primeiro
+                doc.roundedRect(8, 5, 194, 287, 5, 5, 'F'); // 'F' indica preenchimento
+
+
+                doc.roundedRect(x, y, width, height, rx, ry, style);
+
+                
+                // Agora desenha a borda do retângulo
+                doc.setDrawColor(0, 0, 0); // Define a cor da borda (preto)
+                doc.setLineWidth(1); // Define a espessura da linha da borda
+                doc.roundedRect(8, 5, 194, 287, 5, 5, 'S'); // 'S' indica que desenha só o contorno (borda)
+*/
+                
+
+                //Contorno da Pagina
+                doc.roundedRect(8, 5, 194, 287, 5, 5, );
+
+                //Contorno Do Sequencial 
+                // Define a cor da borda
+                doc.setDrawColor(0, 0, 0); // Cor da borda (preto)
+                doc.setLineWidth(0.8); // Largura da linha da borda
+                // Define a cor de preenchimento
+                doc.setFillColor(0, 74, 221);// Cor RGB para preenchimento
+                doc.roundedRect(168, 7, 30, 10, 5, 5, 'F');
+                // Desenha a borda do retângulo arredondado
+                doc.setDrawColor(0, 0, 0); // Define novamente a cor da borda se necessário
+                doc.roundedRect(168, 7, 30, 10, 5, 5, 'S');
+                
+
+                //Contorno Do WRbalança 
+                doc.setDrawColor(0, 0, 0); // Cor da borda (preto)
+                doc.setLineWidth(0.8); // Largura da linha da borda
+                doc.setFillColor(0, 74, 221); // Cor RGB para preenchimento
+                doc.roundedRect(82.8, 7, 46,7, 3, 3, 'F');
+                doc.setDrawColor(0, 0, 0);
+                doc.roundedRect(82.5, 7, 46,7, 3, 3, 'S');
+                
+                //Dados Cliente
+                doc.setDrawColor(0, 0, 0); 
+                doc.setLineWidth(0.8);
+                doc.setFillColor(0, 74, 221);
+                doc.roundedRect(13,43, 184, 8, 3, 3, 'F')
+                doc.setDrawColor(0, 0, 0);
+                doc.roundedRect(13,43, 184, 8, 3, 3, 'S')
+
+                //Descrição do Instrumento
+                doc.setDrawColor(0, 0, 0); 
+                doc.setLineWidth(0.8); 
+                doc.setFillColor(0, 74, 221);
+                doc.roundedRect(13,88, 184, 8, 3, 3, 'F')
+                doc.setDrawColor(0, 0, 0);
+                doc.roundedRect(13,88, 184, 8, 3, 3, 'S')
+
+
+                //Expressura de todas as linhas daqui pra baixo
+                doc.setLineWidth(0.4);
+
+                //Contorno OBS
+                doc.roundedRect(15,149, 182,19, 3, 3)
+
+                //Tabela 
+                doc.roundedRect(15,170, 182,67, 3, 3)//Contorno tabela
+                doc.line(33, 170,33,237);//1 Coluna
+                doc.line(136, 170,136,237);//2 Coluna
+                doc.line(167, 170,167,237);//3 Coluna
+                doc.line(15, 177, 197,177);//1 Linha tabela
+                doc.line(15, 183, 197,183);//2 Linha tabela
+                doc.line(15, 189, 197,189);//3 Linha tabela
+                doc.line(15, 195, 197,195);//4 Linha tabela
+                doc.line(15, 201, 197,201);//5 Linha tabela
+                doc.line(15, 207, 197,207);//6 Linha tabela
+                doc.line(15, 213, 197,213);//7 Linha tabela
+                doc.line(15, 219, 197,219);//8 Linha tabela
+                doc.line(15, 225, 197,225);//9 Linha tabela
+                doc.line(15, 231, 197,231);//10 Linha tabela
+               
+                //Tabela KM
+                doc.roundedRect(15,239, 115,24, 3, 3)//Contorno tabela
+                doc.line(15, 245, 130,245);//1 Linha tabela
+                doc.line(15, 251, 130,251);//2 Linha tabela
+                doc.line(15, 257, 130,257);//3 Linha tabela
+                doc.line(44,  239,44,263);//1 Coluna
+                doc.line(72.7,  239,72.7,263);//2 Coluna
+                doc.line(100,  239,100,263);//3 Coluna
+
+                //Tabela Valor tota e Horas
+                doc.roundedRect(139,239, 58,24, 3, 3)//Contorno tabela
+                doc.line(139, 245, 197,245);//1 Linha tabela
+                doc.line(139, 251, 197,251);//2 Linha tabela
+                doc.line(139, 257, 197,257);//3 Linha tabela
+                doc.line(171.7,  239,171.7,251);//1 Coluna
+
+
+                //Linhas assinaturas
+                doc.line(129, 286, 179,286);//1 Linha tabela
+                doc.line(30, 286, 80,286);//2 Linha tabela
+
+            // Adiciona a imagem fixa ao PDF (posição e tamanho)
+            doc.addImage(imageURL, 'PNG', 15,6.5, 35, 35);
+            doc.addImage(iconeEmail, 'JPG', 56,29.1, 4, 3);
+            doc.addImage(iconeSkype, 'PNG', 116,29.2, 3.5, 3.5)
+
+
+
+
+            // Captura as assinaturas do cliente e do técnico
+            const signatureDataURLClient = getSignatureDataURLClient();
+            const signatureDataURLTechnician = getSignatureDataURLTechnician();
+            
+         
+            // Adiciona assinaturas ao PDF
+            if (signatureDataURLClient) {
+                doc.addImage(signatureDataURLClient, 'PNG', 134, 270, 40, 17); // Assinatura do cliente
+            }
+            if (signatureDataURLTechnician) {
+                doc.addImage(signatureDataURLTechnician, 'PNG', 34, 270, 40, 17); // Assinatura do técnico
+            }
+    
+            // Pegando dados para o pdf
+            const sequencial = document.getElementById('NSequencial').value || '0000';
+            const chegada = document.getElementById('HRchegada').value || '';
+            const saida = document.getElementById('HRsaida').value || '';
+            const data = document.getElementById('data').value || '';
+            const nomeempresa = document.getElementById('NomeEmpresa').value || '';
+            const endereco = document.getElementById('Endereco').value || '';
+            const cep = document.getElementById('CEP').value  || '';
+            const bairro = document.getElementById('Bairro').value  || '';
+            const cidade = document.getElementById('Cidade').value  || '';
+            const cnpj = document.getElementById('cnpj').value  || '';
+            const incricao = document.getElementById('Inscricao').value  || '';
+            const contato = document.getElementById('Contato').value  || '';
+            const telefone = document.getElementById('Telefone').value  || '';
+            const emial = document.getElementById('Email').value  || '';
+            const maquina = document.getElementById('Maquina').value  || '';
+            const checkboxValues = getCheckboxValues();
+            const maquinaTexto = checkboxValues.maquina ? '(x)MÁQUINA' : '( )MÁQUINA';
+            const balancaTexto = checkboxValues.balanca ? '(x)BALANÇA' : '( )BALANÇA';
+            const marca = document.getElementById('Marca').value  || '';
+            const modelo = document.getElementById('Modelo').value  || '';
+            const serie = document.getElementById('Serie').value  || '';
+            const port = document.getElementById('Port').value  || '';
+            const cap = document.getElementById('Cap').value  || '';
+            const dv = document.getElementById('Dv').value  || '';
+            const iv = document.getElementById('Iv').value  || '';
+            const setor = document.getElementById('Setor').value  || '';
+            const patr = document.getElementById('Patr').value  || '';
+            const selo = document.getElementById('Selo').value  || '';
+            const lacrer = document.getElementById('LacreR').value  || '';
+//----------const lacrea = document.getElementById('LacreA').value  || '';
+            const tipop = document.getElementById('TipoP').value  || '';
+            const dimp = document.getElementById('DimP').value  || '';
+            const capcelula = document.getElementById('CapCelula').value  || '';
+            const quantcelula = document.getElementById('QuantCelula').value  || '';
+            const modcelula = document.getElementById('ModCelula').value  || '';
+            const observacao = document.getElementById('OBS').value || '';
+
+
+
+//---------------------------------------------- Pegando valor da quantidade e formatando 
+
+//------------------------------------ Quantidade 1
+const qtd1 = document.getElementById('1QTD').value || '';
+let qtd1F = ''; 
+if (qtd1.trim() !== '') {
+    
+    const qtd1Numerico = parseFloat(qtd1.replace(',', '.'));
+
+   
+    const qtd1FF = isNaN(qtd1Numerico) ? 0 : qtd1Numerico;
+
+   
+    console.log(`Valor inserido: ${qtd1}`);
+
+
+    if (qtd1FF % 1 === 0) {
+       
+        qtd1F = qtd1FF.toString();
+    } else {
+        
+        qtd1F = qtd1FF.toFixed(2).replace('.', ',');
+    }
+}
+
+
+if (qtd1F) {
+    console.log(`Valor formatado: ${qtd1F}`);
+}
+
+        //------------------------------------ Quantidade 2    
+const qtd2 = document.getElementById('2QTD').value || ''; 
+           
+           let qtd2F = ''; // Inicializa como string vazia
+           if (qtd2.trim() !== '') {
+               // Substitui vírgula por ponto para conversão
+               const qtd2Numerico = parseFloat(qtd2.replace(',', '.'));
+           
+               // Verifica se a conversão resultou em um número válido
+               const qtd2FF = isNaN(qtd2Numerico) ? 0 : qtd2Numerico;
+           
+               // Mostra o valor original
+               console.log(`Valor inserido: ${qtd2}`);
+           
+               // Formata qtd2F
+               if (qtd2FF % 1 === 0) {
+                   // Se for inteiro, mostra sem casas decimais
+                   qtd2F = qtd2FF.toString();
+               } else {
+                   // Se tiver casas decimais, mostra com duas casas
+                   qtd2F = qtd2FF.toFixed(2).replace('.', ',');
+               }
+           }
+           
+           // Mostra o resultado apenas se houver um valor
+           if (qtd2F) {
+               console.log(`Valor formatado: ${qtd2F}`);
+           }
+
+//------------------------------------ Quantidade 3
+const qtd3 = document.getElementById('3QTD').value || '';
+let qtd3F = ''; 
+if (qtd3.trim() !== '') {
+    
+    const qtd3Numerico = parseFloat(qtd3.replace(',', '.'));
+
+    const qtd3FF = isNaN(qtd3Numerico) ? 0 : qtd3Numerico;
+
+    console.log(`Valor inserido: ${qtd3}`);
+
+    if (qtd3FF % 1 === 0) {
+        qtd3F = qtd3FF.toString();
+    } else {
+        qtd3F = qtd3FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd3F) {
+    console.log(`Valor formatado: ${qtd3F}`);
+}
+
+
+
+//------------------------------------ Quantidade 4
+const qtd4 = document.getElementById('4QTD').value || '';
+let qtd4F = ''; 
+if (qtd4.trim() !== '') {
+    
+    const qtd4Numerico = parseFloat(qtd4.replace(',', '.'));
+
+    const qtd4FF = isNaN(qtd4Numerico) ? 0 : qtd4Numerico;
+
+    console.log(`Valor inserido: ${qtd4}`);
+
+    if (qtd4FF % 1 === 0) {
+        qtd4F = qtd4FF.toString();
+    } else {
+        qtd4F = qtd4FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd4F) {
+    console.log(`Valor formatado: ${qtd4F}`);
+}
+
+//------------------------------------ Quantidade 5
+const qtd5 = document.getElementById('5QTD').value || '';
+let qtd5F = ''; 
+if (qtd5.trim() !== '') {
+    
+    const qtd5Numerico = parseFloat(qtd5.replace(',', '.'));
+
+    const qtd5FF = isNaN(qtd5Numerico) ? 0 : qtd5Numerico;
+
+    console.log(`Valor inserido: ${qtd5}`);
+
+    if (qtd5FF % 1 === 0) {
+        qtd5F = qtd5FF.toString();
+    } else {
+        qtd5F = qtd5FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd5F) {
+    console.log(`Valor formatado: ${qtd5F}`);
+}
+
+//------------------------------------ Quantidade 6
+const qtd6 = document.getElementById('6QTD').value || '';
+let qtd6F = ''; 
+if (qtd6.trim() !== '') {
+    
+    const qtd6Numerico = parseFloat(qtd6.replace(',', '.'));
+
+    const qtd6FF = isNaN(qtd6Numerico) ? 0 : qtd6Numerico;
+
+    console.log(`Valor inserido: ${qtd6}`);
+
+    if (qtd6FF % 1 === 0) {
+        qtd6F = qtd6FF.toString();
+    } else {
+        qtd6F = qtd6FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd6F) {
+    console.log(`Valor formatado: ${qtd6F}`);
+}
+
+//------------------------------------ Quantidade 7
+const qtd7 = document.getElementById('7QTD').value || '';
+let qtd7F = ''; 
+if (qtd7.trim() !== '') {
+    
+    const qtd7Numerico = parseFloat(qtd7.replace(',', '.'));
+
+    const qtd7FF = isNaN(qtd7Numerico) ? 0 : qtd7Numerico;
+
+    console.log(`Valor inserido: ${qtd7}`);
+
+    if (qtd7FF % 1 === 0) {
+        qtd7F = qtd7FF.toString();
+    } else {
+        qtd7F = qtd7FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd7F) {
+    console.log(`Valor formatado: ${qtd7F}`);
+}
+
+//------------------------------------ Quantidade 8
+const qtd8 = document.getElementById('8QTD').value || '';
+let qtd8F = ''; 
+if (qtd8.trim() !== '') {
+    
+    const qtd8Numerico = parseFloat(qtd8.replace(',', '.'));
+
+    const qtd8FF = isNaN(qtd8Numerico) ? 0 : qtd8Numerico;
+
+    console.log(`Valor inserido: ${qtd8}`);
+
+    if (qtd8FF % 1 === 0) {
+        qtd8F = qtd8FF.toString();
+    } else {
+        qtd8F = qtd8FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd8F) {
+    console.log(`Valor formatado: ${qtd8F}`);
+}
+
+//------------------------------------ Quantidade 9
+const qtd9 = document.getElementById('9QTD').value || '';
+let qtd9F = ''; 
+if (qtd9.trim() !== '') {
+    
+    const qtd9Numerico = parseFloat(qtd9.replace(',', '.'));
+
+    const qtd9FF = isNaN(qtd9Numerico) ? 0 : qtd9Numerico;
+
+    console.log(`Valor inserido: ${qtd9}`);
+
+    if (qtd9FF % 1 === 0) {
+        qtd9F = qtd9FF.toString();
+    } else {
+        qtd9F = qtd9FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd9F) {
+    console.log(`Valor formatado: ${qtd9F}`);
+}
+
+//------------------------------------ Quantidade 10
+const qtd10 = document.getElementById('10QTD').value || '';
+let qtd10F = ''; 
+if (qtd10.trim() !== '') {
+    
+    const qtd10Numerico = parseFloat(qtd10.replace(',', '.'));
+
+    const qtd10FF = isNaN(qtd10Numerico) ? 0 : qtd10Numerico;
+
+    console.log(`Valor inserido: ${qtd10}`);
+
+    if (qtd10FF % 1 === 0) {
+        qtd10F = qtd10FF.toString();
+    } else {
+        qtd10F = qtd10FF.toFixed(2).replace('.', ',');
+    }
+}
+
+if (qtd10F) {
+    console.log(`Valor formatado: ${qtd10F}`);
+}
+
+    
+            const desc1 = document.getElementById('1Descr').value||'';
+            const desc2 = document.getElementById('2Descr').value||'';
+            const desc3 = document.getElementById('3Descr').value||'';
+            const desc4 = document.getElementById('4Descr').value||'';
+            const desc5 = document.getElementById('5Descr').value||'';
+            const desc6 = document.getElementById('6Descr').value||'';
+            const desc7 = document.getElementById('7Descr').value||'';
+            const desc8 = document.getElementById('8Descr').value||'';
+            const desc9 = document.getElementById('9Descr').value||'';
+            const desc10 = document.getElementById('10Descr').value||'';
+
+
+
+//------------------------------------ Pegando o valor unitario e formatando
+
+//------------------------------------ Valor Unitario 1
+const valorU1 = document.getElementById('1ValorU').value || '';
+const valorU1Numerico = parseFloat(valorU1.replace(',', '.')); 
+
+let valorU1F = '';
+
+if (valorU1.trim() !== '' && !isNaN(valorU1Numerico)) {
+   
+    valorU1F = valorU1Numerico.toFixed(2).replace('.', ','); 
+}
+
+
+if (valorU1F) {
+    console.log(valorU1F);
+}
+            
+//------------------------------------ Valor Unitario 2
+const valorU2 = document.getElementById('2ValorU').value || '';
+const valorU2Numerico = parseFloat(valorU2.replace(',', '.')); // Converte para número, substituindo vírgula por ponto
+
+// Inicializa valorU2F como uma string vazia
+let valorU2F = '';
+
+if (valorU2.trim() !== '' && !isNaN(valorU2Numerico)) {
+    // Formata o valorU2F para exibir com vírgula
+    valorU2F = valorU2Numerico.toFixed(2).replace('.', ','); // Formata para duas casas decimais e substitui ponto por vírgula
+}
+
+// Mostra o valor formatado apenas se valorU2F não estiver vazio
+if (valorU2F) {
+    console.log(valorU2F);
+}
+
+//------------------------------------ Valor Unitario 3
+const valorU3 = document.getElementById('3ValorU').value || '';
+const valorU3Numerico = parseFloat(valorU3.replace(',', '.')); 
+
+let valorU3F = '';
+
+if (valorU3.trim() !== '' && !isNaN(valorU3Numerico)) {
+   
+    valorU3F = valorU3Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU3F) {
+    console.log(valorU3F);
+}
+
+//------------------------------------ Valor Unitario 4
+const valorU4 = document.getElementById('4ValorU').value || '';
+const valorU4Numerico = parseFloat(valorU4.replace(',', '.')); 
+
+let valorU4F = '';
+
+if (valorU4.trim() !== '' && !isNaN(valorU4Numerico)) {
+    valorU4F = valorU4Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU4F) {
+    console.log(valorU4F);
+}
+
+//------------------------------------ Valor Unitario 5
+const valorU5 = document.getElementById('5ValorU').value || '';
+const valorU5Numerico = parseFloat(valorU5.replace(',', '.')); 
+
+let valorU5F = '';
+
+if (valorU5.trim() !== '' && !isNaN(valorU5Numerico)) {
+    valorU5F = valorU5Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU5F) {
+    console.log(valorU5F);
+}
+
+//------------------------------------ Valor Unitario 6
+const valorU6 = document.getElementById('6ValorU').value || '';
+const valorU6Numerico = parseFloat(valorU6.replace(',', '.')); 
+
+let valorU6F = '';
+
+if (valorU6.trim() !== '' && !isNaN(valorU6Numerico)) {
+    valorU6F = valorU6Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU6F) {
+    console.log(valorU6F);
+}
+
+//------------------------------------ Valor Unitario 7
+const valorU7 = document.getElementById('7ValorU').value || '';
+const valorU7Numerico = parseFloat(valorU7.replace(',', '.')); 
+
+let valorU7F = '';
+
+if (valorU7.trim() !== '' && !isNaN(valorU7Numerico)) {
+    valorU7F = valorU7Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU7F) {
+    console.log(valorU7F);
+}
+
+//------------------------------------ Valor Unitario 8
+const valorU8 = document.getElementById('8ValorU').value || '';
+const valorU8Numerico = parseFloat(valorU8.replace(',', '.')); 
+
+let valorU8F = '';
+
+if (valorU8.trim() !== '' && !isNaN(valorU8Numerico)) {
+    valorU8F = valorU8Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU8F) {
+    console.log(valorU8F);
+}
+
+//------------------------------------ Valor Unitario 9
+const valorU9 = document.getElementById('9ValorU').value || '';
+const valorU9Numerico = parseFloat(valorU9.replace(',', '.')); 
+
+let valorU9F = '';
+
+if (valorU9.trim() !== '' && !isNaN(valorU9Numerico)) {
+    valorU9F = valorU9Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU9F) {
+    console.log(valorU9F);
+}
+
+//------------------------------------ Valor Unitario 10
+const valorU10 = document.getElementById('10ValorU').value || '';
+const valorU10Numerico = parseFloat(valorU10.replace(',', '.')); 
+
+let valorU10F = '';
+
+if (valorU10.trim() !== '' && !isNaN(valorU10Numerico)) {
+    valorU10F = valorU10Numerico.toFixed(2).replace('.', ','); 
+}
+
+if (valorU10F) {
+    console.log(valorU10F);
+}
+
+            //const valor1 = document.getElementById('1Valor').value||'';
+            //const valor2 = document.getElementById('2Valor').value||'';
+            //const valor3 = document.getElementById('3Valor').value||'';
+            //const valor4 = document.getElementById('4Valor').value||'';
+            //const valor5 = document.getElementById('5Valor').value||'';
+            //const valor6 = document.getElementById('6Valor').value||'';
+            //const valor7 = document.getElementById('7Valor').value||'';
+            //const valor8 = document.getElementById('8Valor').value||'';
+            //const valor9 = document.getElementById('8Valor').value||'';
+            //const valor10 = document.getElementById('10Valor').value||'';
+            //const valortotals = document.getElementById('ValorTotal').value||'';
+
+//------------------------------------ Quantidade KM e formatando
+            const KmQTD = document.getElementById('KmQTD').value||'';
+            let KmQTDF = '';
+
+            if(KmQTD.trim() !== ''){
+                const KmQTDNumerico = parseFloat(KmQTD.replace(',', '.'));
+                const KmQTDFF = isNaN(KmQTDNumerico) ? 0 : KmQTDNumerico;
+                console.log(`${KmQTD}`);
+
+                if(KmQTDFF % 1 === 0){
+                    KmQTDF = KmQTDFF.toString();
+                }else{
+                    KmQTDF = KmQTDFF.toFixed(2).replace('.', ',');
+                }
+            }
+
+            if (KmQTDF){
+                console.log(`${KmQTDF}`);
+            }
+            
+
+         //------------------------------------ Km Valor Unitario    
+            const KmVLUnitario = document.getElementById('KmVLUnitario').value||'';
+            const KmVLUnitarioNumerico = parseFloat(KmVLUnitario.replace(',', '.'));
+
+            let KmVLUnitarioF = '';
+
+            if(KmVLUnitario.trim() !== '' && !isNaN(KmVLUnitarioNumerico)){
+                KmVLUnitarioF = KmVLUnitarioNumerico.toFixed(2).replace('.', ','); 
+            }
+
+            if (KmVLUnitarioF){
+                console.log(KmVLUnitarioF);
+            }
+    
+
+
+//------------------------------------ Km qtd * km valor unitario 
+
+            //const KmVLTotal = document.getElementById('KmVLTotal').value||'';
+
+            let KmTotalF = '';
+            if(KmQTDF && KmVLUnitarioF){
+                const KmQTDNumerico = parseFloat(KmQTD.replace(',', '.'));
+                const KmVLUnitarioNumerico = parseFloat(KmVLUnitario.replace(',', '.'));
+                const KmTotal = KmQTDNumerico * KmVLUnitarioNumerico;
+                KmTotalF = KmTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            }  
+
+            if(KmTotalF){
+                console.log(`${KmTotalF}`);
+            }
+
+            if(KmTotalF){
+                console.log(KmTotalF);
+            }
+
+//------------------------------------ HR quantidade
+            const HRQTD = document.getElementById('HRQTD').value||'';
+            let HRQTDF = '';
+
+            if(HRQTD.trim() !== ''){
+                const HRQTDNumerico = parseFloat(HRQTD.replace(',', '.'));
+                const HRQTDFF = isNaN(HRQTDNumerico) ? 0 : HRQTDNumerico;
+                console.log(`${HRQTD}`);
+
+                if(HRQTDFF % 1 == 0 ){
+                    HRQTDF = HRQTDFF.toString();
+                }else{
+                    HRQTDF = HRQTDFF.toFixed(2).replace('.', ',');
+                }
+            }
+
+             if(HRQTDF){
+                console.log(`${HRQTDF}`);
+             }
+
+             //------------------------------------ Hora Valor Unitario 
+            const HRVLUnitario = document.getElementById('HRVLUnitario').value||'';
+            const HRVLUnitarioNumerico = parseFloat(HRVLUnitario.replace(',', '.'));
+
+            let HRVLUnitarioF = '';
+
+            if(HRVLUnitario.trim() !== '' && !isNaN(HRVLUnitarioNumerico)){
+                HRVLUnitarioF = HRVLUnitarioNumerico.toFixed(2).replace('.', ','); 
+            }
+
+            if (HRVLUnitarioF){
+                console.log(HRVLUnitarioF);
+            }
+
+
+            //------------------------------------ HR quantidade * HR Valor unitario
+
+            //const HRVLTotal = document.getElementById('HRVLTotal').value||'';
+            let HRTotalF = '';
+            if(HRQTDF && HRVLUnitarioF){
+                const HRQTDNumerico = parseFloat(HRQTD.replace(',', '.'));
+                const HRVLUnitarioNumerico = parseFloat(HRVLUnitario.replace(',', '.'));
+                const HRTotal = HRQTDNumerico * HRVLUnitarioNumerico;
+                HRTotalF = HRTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            }  
+
+            if(HRTotalF){
+                console.log(`${HRTotalF}`);
+            }
+
+            if(HRTotalF){
+                console.log(HRTotalF);
+            }
+
+            //------------------------------------quantidade  mão de obra
+            const MDQTD = document.getElementById('MDQTD').value||'';
+            let MDQTDF = '';
+
+            if(MDQTD.trim() !== ''){
+                const MDQTDNumerico = parseFloat(MDQTD.replace(',', '.'));
+                const MDQTDFF = isNaN(MDQTDNumerico) ? 0 : MDQTDNumerico;
+                console.log(`${MDQTD}`);
+
+                if(MDQTDFF % 1 == 0 ){
+                    MDQTDF = MDQTDFF.toString();
+                }else{
+                    MDQTDF = MDQTDFF.toFixed(2).replace('.', ',');
+                }
+            }
+
+             if(MDQTDF){
+                console.log(`${MDQTDF}`);
+             }
+
+            //------------------------------------ Mão de obra Valor Unitario 
+            const MDVLUnitario = document.getElementById('MDVLUnitario').value||'';
+            const MDVLUnitarioNumerico = parseFloat(MDVLUnitario.replace(',', '.'));
+
+            let MDVLUnitarioF = '';
+
+            if(MDVLUnitario.trim() !== '' && !isNaN(MDVLUnitarioNumerico)){
+                MDVLUnitarioF = MDVLUnitarioNumerico.toFixed(2).replace('.', ','); 
+            }
+
+            if (MDVLUnitarioF){
+                console.log(MDVLUnitarioF);
+            }
+
+            //------------------------------------ mão de obra quantidade * mão de obra valor unitario
+            //const MDVLTotal = document.getElementById('MDVLTotal').value||'';
+            let MDTotalF = '';
+            if(MDQTDF && MDVLUnitarioF){
+                const MDQTDNumerico = parseFloat(MDQTD.replace(',', '.'));
+                const MDVLUnitarioNumerico = parseFloat(MDVLUnitario.replace(',', '.'));
+                const MDTotal = MDQTDNumerico * MDVLUnitarioNumerico;
+                MDTotalF = MDTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            }  
+
+            if(MDTotalF){
+                console.log(`${MDTotalF}`);
+            }
+
+            if(MDTotalF){
+                console.log(MDTotalF);
+            }
+
+
+
+            
+            
+//------------const NomeTecnico = document.getElementById('NomeTecnico').value||'';
+//------------const RGTecnico = document.getElementById('RGTecnico').value||'';
+
+
+//----------------------------Somas das quantidades * valores inutarios
+let vlt1F = '';
+if (qtd1F && valorU1F) { 
+    const qtd1Numerico = parseFloat(qtd1.replace(',', '.'));
+    const valorU1Numerico = parseFloat(valorU1.replace(',', '.')); 
+    const vlt1 = qtd1Numerico * valorU1Numerico; 
+    vlt1F = vlt1.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+
+if (vlt1F) {
+    console.log(`Valor total: ${vlt1F}`);
+}
+
+
+if (vlt1F) {
+    console.log(vlt1F);
+}
+
+
+
+let vlt2F = ''; 
+if (qtd2F && valorU2F) {
+    const qtd2Numerico = parseFloat(qtd2.replace(',', '.')); 
+    const valorU2Numerico = parseFloat(valorU2.replace(',', '.')); 
+    const vlt2 = qtd2Numerico * valorU2Numerico; 
+    vlt2F = vlt2.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+// Mostra o resultado final
+if (vlt2F) {
+    console.log(`Valor total: ${vlt2F}`);
+}
+
+// Mostra o valor final apenas se houver um resultado
+if (vlt2F) {
+    console.log(vlt2F);
+}
+
+
+
+let vlt3F = '';
+if (qtd3F && valorU3F) { 
+    const qtd3Numerico = parseFloat(qtd3.replace(',', '.'));
+    const valorU3Numerico = parseFloat(valorU3.replace(',', '.')); 
+    const vlt3 = qtd3Numerico * valorU3Numerico; 
+    vlt3F = vlt3.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt3F) {
+    console.log(`Valor total: ${vlt3F}`);
+}
+
+if (vlt3F) {
+    console.log(vlt3F);
+}
+
+
+let vlt4F = '';
+if (qtd4F && valorU4F) { 
+    const qtd4Numerico = parseFloat(qtd4.replace(',', '.'));
+    const valorU4Numerico = parseFloat(valorU4.replace(',', '.')); 
+    const vlt4 = qtd4Numerico * valorU4Numerico; 
+    vlt4F = vlt4.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt4F) {
+    console.log(`Valor total: ${vlt4F}`);
+}
+
+if (vlt4F) {
+    console.log(vlt4F);
+}
+
+
+
+let vlt5F = '';
+if (qtd5F && valorU5F) { 
+    const qtd5Numerico = parseFloat(qtd5.replace(',', '.'));
+    const valorU5Numerico = parseFloat(valorU5.replace(',', '.')); 
+    const vlt5 = qtd5Numerico * valorU5Numerico; 
+    vlt5F = vlt5.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt5F) {
+    console.log(`Valor total: ${vlt5F}`);
+}
+
+if (vlt5F) {
+    console.log(vlt5F);
+}
+
+let vlt6F = '';
+if (qtd6F && valorU6F) { 
+    const qtd6Numerico = parseFloat(qtd6.replace(',', '.'));
+    const valorU6Numerico = parseFloat(valorU6.replace(',', '.')); 
+    const vlt6 = qtd6Numerico * valorU6Numerico; 
+    vlt6F = vlt6.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt6F) {
+    console.log(`Valor total: ${vlt6F}`);
+}
+
+if (vlt6F) {
+    console.log(vlt6F);
+}
+
+let vlt7F = '';
+if (qtd7F && valorU7F) { 
+    const qtd7Numerico = parseFloat(qtd7.replace(',', '.'));
+    const valorU7Numerico = parseFloat(valorU7.replace(',', '.')); 
+    const vlt7 = qtd7Numerico * valorU7Numerico; 
+    vlt7F = vlt7.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt7F) {
+    console.log(`Valor total: ${vlt7F}`);
+}
+
+if (vlt7F) {
+    console.log(vlt7F);
+}
+
+let vlt8F = '';
+if (qtd8F && valorU8F) { 
+    const qtd8Numerico = parseFloat(qtd8.replace(',', '.'));
+    const valorU8Numerico = parseFloat(valorU8.replace(',', '.')); 
+    const vlt8 = qtd8Numerico * valorU8Numerico; 
+    vlt8F = vlt8.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt8F) {
+    console.log(`Valor total: ${vlt8F}`);
+}
+
+if (vlt8F) {
+    console.log(vlt8F);
+}
+
+let vlt9F = '';
+if (qtd9F && valorU9F) { 
+    const qtd9Numerico = parseFloat(qtd9.replace(',', '.'));
+    const valorU9Numerico = parseFloat(valorU9.replace(',', '.')); 
+    const vlt9 = qtd9Numerico * valorU9Numerico; 
+    vlt9F = vlt9.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt9F) {
+    console.log(`Valor total: ${vlt9F}`);
+}
+
+if (vlt9F) {
+    console.log(vlt9F);
+}
+
+  let vlt10F = '';
+if (qtd10F && valorU10F) { 
+    const qtd10Numerico = parseFloat(qtd10.replace(',', '.'));
+    const valorU10Numerico = parseFloat(valorU10.replace(',', '.')); 
+    const vlt10 = qtd10Numerico * valorU10Numerico; 
+    vlt10F = vlt10.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); 
+}
+
+if (vlt10F) {
+    console.log(`Valor total: ${vlt10F}`);
+}
+
+if (vlt10F) {
+    console.log(vlt10F);
+}
+
+//------------------------------------ Juntar todos valores 
+const valortotals = 
+    (parseFloat(vlt1F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt2F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt3F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt4F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt5F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt6F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt7F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt8F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt9F.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(vlt10F.replace('.', '').replace(',', '.')) || 0) +
+    (parseFloat(MDTotalF.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(KmTotalF.replace('.', '').replace(',', '.')) || 0) + 
+    (parseFloat(HRTotalF.replace('.', '').replace(',', '.')) || 0);
+
+const valortotalsF = valortotals.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+console.log(valortotalsF);
+
+
+//------------------------------------ Formatação da data
+function formatarData(data) {
+    if (data === '') return data; // Retorna se a data for uma string vazia
+
+    // Divide a string "YYYY-MM-DD" em partes
+    const [ano, mes, dia] = data.split('-');
+    
+    // Cria um objeto Date usando os valores específicos (meses começam em 0)
+    const dataObj = new Date(Number(ano), Number(mes) - 1, Number(dia));
+    
+    // Formata a data no formato "DD/MM/YYYY"
+    const diaFormatado = String(dataObj.getDate()).padStart(2, '0');
+    const mesFormatado = String(dataObj.getMonth() + 1).padStart(2, '0');
+    const anoFormatado = dataObj.getFullYear();
+    
+    return `${diaFormatado}/${mesFormatado}/${anoFormatado}`;
+}
+
+const datas = '2024-12-12'; // Exemplo de entrada
+const dataFormatada = formatarData(data);
+console.log(dataFormatada);
+
+    
+
+
+//------------------------------------ ADC dados no PDF
+            doc.setTextColor(0, 0, 0);
+
+            //W.R.BALANÇAS
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text(`W.R.BALANÇAS`, 85, 12.5)
+
+            //CNPJ
+            doc.setFontSize(10); 
+            doc.setFont('helvetica', 'italic');
+            doc.setTextColor(0, 0, 0);
+            doc.text(`CNPJ:21.060.339/0001-53 I.E :647.728.123.117`,  67, 18)
+
+            //Endereço
+            doc.setFontSize(8)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`Rua:Manuel Pires da Silva, 574-CEP 15.082-120/São José do Rio Preto/SP`, 57,22)
+
+            //Contato 
+            doc.setFontSize(12)
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Rodrigo:(17)99641-6580  Elizangela:(17)99662-8106`,55,27)
+
+            //E-mail 
+            doc.setFontSize(11)
+            doc.setFont('helvetica','normal')
+            doc.text(`   E-mail:wrbalancas@gmail.com      Skype:grigoleto0803`,58,32)
+
+            //Dados Cliente
+            doc.setFontSize(18)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text(`DADOS DO CLIENTE`,74,49.5)
+
+
+            //Sequencial
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(25); // Tamanho da fonte para o sequencial
+            doc.setTextColor(255, 255, 255);
+            doc.text(`${sequencial}`, 173, 15);
+
+            //Data
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(13); // Tamanho da fonte para o sequencial
+            doc.setTextColor(0, 0, 0); // Cor vermelho
+            doc.text(`Data:`, 164, 22);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(13);
+            doc.text(`${dataFormatada}`, 176, 22);
+
+
+
+            //Nome empresa
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Empresa:`,  17,56);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${nomeempresa}`,  41.5,56);
+
+           //Endereço Cliente
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Endereço:`,  17,62);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${endereco}`,  43,62);
+
+            //CEP Cliente 
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`CEP:`,  155,62); 
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${cep}`,  167.5,62); 
+
+            //Bairro Cliente 
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Bairro:`,  17,68); 
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${bairro}`,  35,68); 
+
+            //Cidade Cliente 
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Cidade:`,  120,68); 
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${cidade}`,  140,68); 
+
+            //CNPJ Cliente 
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`CNPJ:`,  17,74); 
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${cnpj}`,  33,74); 
+
+            //Inscriçao Cliente
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`I.E:`,  110,74);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${incricao}`,  119,74);
+
+            //Contato Cliente
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Contato:`,  17,80);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${contato}`,  40,80);
+
+            //Telefone Cliente
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Telefone:`, 125,80);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${telefone}`, 149,80);
+
+            //E-mail Cliente
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`E-mail:`,  17,86);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(15);
+            doc.text(`${emial}`,  35,86);
+
+            //Descrição do instrumento
+            doc.setFontSize(18)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(255, 255, 255);
+            doc.text(`DESCRIÇÃO DO INSTRUMENTO`,56,94.5)
+
+            
+          
+            //Maquina / Balança
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.setFont('helvetica', 'bold');
+            doc.text(maquinaTexto, 55, 102);
+            doc.text(balancaTexto, 122, 102);
+
+            //Marca
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Marca:`,17,108)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${marca}`,35,108)
+
+            //Modelo
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Modelo:`,80,108)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${modelo}`,101,108)
+
+            //Serie
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Serie:`,140,108)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${serie}`,155,108)
+
+            //Porta
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Port:`,17,114)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${port}`,30,114)
+
+            //Capacidade
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Cap:`,70,114)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${cap}`,82,114)
+
+            //Divisao
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Dv:`,120,114)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${dv}`,129,114)
+
+            //Iv
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Iv:`,160,114)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${iv}`,166,114)
+
+            //Patrimonio
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Patr:`,17,120)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${patr}`,30,120)
+
+
+            //Setor
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Setor:`,68,120)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${setor}`,83,120)
+
+            //Selo
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Selo:`,150,120)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${selo}`,163,120)
+
+            //Lacre retirado
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Lacre retirado:`,17,126)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${lacrer}`,54,126)
+
+
+            //Lacrea afixado
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Lacre afixado:`,82,126)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`10002150`,118,126)
+
+            //Tipo plataforma
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Tipo Plataf:`,140,132)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${tipop}`,169,132)
+
+            //Dim P
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Dim P:`,17,132)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${dimp}`,34,132)
+
+            //Capacidade celula
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Cap Células:`,17,138)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${capcelula}`,49,138)
+
+            //Quant celula
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Quant. Células:`,110,138)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${quantcelula}`,149,138)
+
+             //Mod celula
+             doc.setFontSize(15)
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`Mod. Células:`,70,132)
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${modcelula}`,105,132)
+
+            
+            // Observações
+            
+            const marginLeft = 17;
+
+            // Configurações de texto
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(15);
+            doc.setTextColor(0, 0, 0);
+            doc.text('Observações', marginLeft, 147);
+            doc.setFont('helvetica', 'normal');
+
+            // Configura o texto das observações
+            doc.setFontSize(14);
+            const maxWidth = 180; // Define a largura máxima do texto
+            const linhasObservacao = doc.splitTextToSize(observacao, maxWidth);
+
+            // Define a altura inicial para o texto das observações
+            let textHeight = 154;
+
+            // Adiciona as observações ao PDF
+            for (const linha of linhasObservacao) {
+            doc.text(linha, marginLeft, textHeight);
+            textHeight += 4; // Ajusta a altura para a próxima linha
+            }
+            
+            
+
+            //Titulo tabela Quantidade
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Qtde.`, 18, 175.5)
+
+            //Titulo Descrição do Serviço
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Descrição do Serviço`, 58, 175.5)
+
+            //Titulo Total
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Total`,175, 175.5)
+
+            //Titulo Total
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Valor uni.`,139.5, 175.5)
+
+
+
+            //QTD1
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd1F}`,16,182)
+
+            //QTD2
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd2F}`,16,188)
+
+            //QTD3
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd3F}`,16,194)
+
+            //QTD4
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd4F}`,16,200)
+
+            //QTD5
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd5F}`,16,206)
+
+            //QTD6
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd6F}`,16,212);
+
+            //QTD7
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd7F}`,16,218)
+
+            //QTD8
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd8F}`,16,224)
+
+            //QTD9
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd9F}`,16,230)
+
+            //QTD10
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${qtd10F}`,16,236)
+
+
+
+            //Descrição1
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc1}`,34,182)
+
+            //Descrição2
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc2}`,34,188)
+
+            //Descrição3
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc3}`,34,194)
+
+            //Descrição4
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc4}`,34,200)
+
+            //Descrição5
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc5}`,34,206)
+
+            //Descrição6
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc6}`,34,212);
+
+            //Descrição7
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc7}`,34,218)
+
+            //Descrição8
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc8}`,34,224)
+
+            //Descrição9
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc9}`,34,230)
+
+            //Descrição10
+            doc.setFontSize(14)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${desc10}`,34,236)
+
+            //R$1
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 181.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU1F}`, 144, 181.8) 
+             //R$2
+             doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 187.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU2F}`, 144, 187.8) 
+            //R$3
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 193.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU3F}`, 144, 193.8) 
+            //R$4
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 199.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU4F}`, 144, 199.8)        
+            //R$5
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 205.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU5F}`, 144, 205.8)
+            //R$6
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 211.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU6F}`, 144, 211.8)
+            //R$7
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 217.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU7F}`, 144, 217.8)
+            //R$8
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 223.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU8F}`, 144, 223.8)
+            //R$9
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 229.8)
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU9F}`, 144, 229.8)
+            //R$10
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 137, 235.8) 
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'normal');
+            doc.text(`${valorU10F}`, 144, 235.8)
+
+            
+
+            //R$1
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 181.8)
+            //Valo1
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(vlt1F,174.5,181.8)
+            
+            //R$2
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 187.8)
+            //Valor2
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt2F}`,174.5,187.8)
+
+            //R$3
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 193.8)
+            //Valor3
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt3F}`,174.5,193.8)
+
+            //R$4
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 199.8)
+            //Valor4
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt4F}`,174.5,199.8)
+
+            
+            //R$5
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 205.8)
+            //Valor5
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt5F}`,174.5,205.8)
+
+            //R$6
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 211.8)
+            //Valor6
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt6F}`,174.5,211.8)
+
+            //R$7
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 217.8)
+            //Valor7
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt7F}`,174.5,217.8)
+
+            //R$8
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 223.8)
+            //Valor8
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt8F}`,174.5,223.8)
+
+            //R$9
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 229.8)
+            //Valor9
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt9F}`,174.5,229.8)
+
+            //R$10
+            doc.setFontSize(15);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`R$`, 168, 235.8)
+            //Valor10
+            doc.setFontSize(15)
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(`${vlt10F}`,174.5,235.8)
+
+
+
+            //Titulo Tabela Item
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`ITEM`, 25, 243.5)
+
+            //Titulo Tabela Km Rodado Carro
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Km Rodado Carro`, 16, 249.5)
+
+            
+
+           
+
+            //Titulo Tabela Hora Técnica
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Hora Técnica`, 16, 255.5)
+
+            //Titulo Tabela Hora Técnica
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Mão de Obra`, 16, 261.5)
+
+
+            //Titulo tabela km Quantidade
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'bold')
+            doc.text(`QUANTIDADE`,45, 243.5)
+
+            //Titulo tabela km vr unitario
+            doc.setFontSize(11)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`VR UNITÀRIO`, 73.8, 243.5)
+
+           
+            //Titulo tabela km valor total
+            doc.setFontSize(11)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`VALOR TOTAL`, 101, 243.5)
+
+           
+
+            //Hora chegada
+            doc.setFontSize(10)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`HORA CHEGADA`, 141.3, 243.5)
+
+            //Hora chegada variavel
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${chegada}`, 150, 249.5)
+
+            //Hora SAIDA 
+            doc.setFontSize(10)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`HORA SAÍDA`, 173,243.5)
+
+            //Hora saida variavel
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${saida}`, 178, 249.5)
+
+           
+
+            //Titulo tabela km valor total do Serviço 
+            doc.setFontSize(11)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`VALOR TOTAL DO SERVIÇO`, 141, 255.5)
+            
+            //Valor total do serviço 
+            doc.setFontSize(12)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${valortotalsF}`, 149, 261.8)
+
+             //$ Valo total do serviço
+             doc.setFontSize(12)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 143, 261.8)
+
+            //Quantidade KM
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${KmQTDF}`, 55, 249.5)
+
+            
+
+
+            //Km  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${KmVLUnitarioF}`, 80, 249.5)
+
+            //Km  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 74,249.5)
+
+            //Km  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 101,249.5)
+
+            //Km  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${KmTotalF}`, 107,249.5)
+
+
+
+            //Quantidade HR 
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${HRQTDF}`, 55, 255.7)
+
+            
+           
+
+
+            //hr  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 74,255.7)
+
+            //HR  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${HRVLUnitarioF}`, 80, 255.7)
+
+            //hr  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 101,255.7)
+
+            //HR  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${HRTotalF}`, 107,255.7)
+
+
+            //Quantidade mao de obra
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${MDQTDF}`, 55, 261.5)
+
+
+
+            //MD  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica','bold')
+            doc.text(`R$`, 74,261.5)
+
+
+            //MD  Valor Unitario
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${MDVLUnitarioF}`, 80, 261.5)
+
+
+            //hr  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`R$`, 101, 261.5)
+
+            //HR  Valor total
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`${MDTotalF}`, 107, 261.5)
+
+
+            //Nome tecnico 
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`Técnico:`, 16, 268)
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`Rodrigo Grigoleto`, 35, 268)
+
+            //RG tecnico 
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`RG:`, 75,268)
+            doc.setFontSize(13)
+            doc.setFont('helvetica', 'normal')
+            doc.text(`45268098-0`, 84,268)
+
+            //Ass tecnico
+            doc.setFontSize(13);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`ASS. Técnico`, 40, 290)
+
+             //Ass tecnico
+             doc.setFontSize(13);
+            doc.setFont('helvetica', 'bold');
+            doc.text(`ASS. Cliente`, 140, 290)
+
+
+            /*
+              doc.setFontSize(20); // Tamanho da fonte para o sequencial
+            doc.setTextColor(0, 0, 0); // Cor azul
+            doc.text(`Data: ${data}`, 10, 30);
+            doc.text(`Chegada: ${chegada}`, 10, 40);
+            doc.text(`Saída: ${saida}`, 10, 50);
+            
+            */
+           
+
+            /*
+            //Linha do topo
+            doc.line(8, 5, 202, 5); //1-direita esquerda 2-Primeira ponta,cima baixo 3-tamanho 4- altura da segunda ponta
+            
+            //Linha de baixo
+            doc.line(8, 292, 202, 292);
+
+            //Linha da esquerda
+            doc.line(8, 5, 8, 292);
+
+            //Linha Esquerda
+            doc.line(202, 5, 202, 292);
+            */
+
+            return doc;
+
+
+        }
+
+       
+    
+        // Função para gerar o PDF e fazer o download
+        document.getElementById('generate-pdf').addEventListener('click', function () {
+            const doc = generatePDF();
+            doc.save("Orgdem de Serviço.pdf");
+        });
+    
+        // Função para visualizar o PDF
+        document.getElementById('preview-pdf').addEventListener('click', function () {
+            const doc = generatePDF();
+            doc.output('dataurlnewwindow');
+        });
+    </script>
+    
