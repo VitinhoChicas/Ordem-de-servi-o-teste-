@@ -469,6 +469,7 @@
         height: 60px;
         width: 340px;
         border-radius:20px;
+        resize: none;
         }
 
         .DescricacaoServico{
@@ -479,7 +480,7 @@
         align-items:center;
         flex-direction:column;
         justify-content: center;
-
+        resize: none;
         }
 
         .Div1, .Div2, .Div3, .Div4, .Div5, .Div6, .Div7, .Div8, .Div9, .Div10{
@@ -487,7 +488,6 @@
         width:345px;
         
         display: flex;
-        align-items:center;
         flex-direction:row;
 
         }
@@ -531,6 +531,7 @@
             border-radius: 20px;
             border: solid 1px black;
             text-align: center;
+            resize: none
         }
 
         .QTD {
@@ -890,7 +891,7 @@
                         <tr class="trc">
                             <td class="tdc"><b>I.E.:</b></td>
                             <td class="tdc">
-                                <input type="text" name="Inscricao" id="Inscricao" maxlength="14" class="Inscricao" autocomplete="off" required> 
+                                <input type="text" name="Inscricao" id="Inscricao" maxlength="15" class="Inscricao" oninput="formatarIe(this)" autocomplete="off" required> 
                       
                             </td>
                             
@@ -899,7 +900,7 @@
                         <tr class="trc">
                             <td class="tdc"><b>CNPJ:</b></td>
                             <td class="tdc">
-                                <input type="text" id="cnpj" name="cnpj" class="cnpj" maxlength="18" autocomplete="off" yy oninput="formatarCNPJ(this)" maxlength="18" required>
+                                <input type="text" id="cnpj" name="cnpj" class="cnpj" maxlength="18" autocomplete="off"  oninput="formatarCNPJ(this)" maxlength="18" required>
         
                         </td>
                         </tr>
@@ -1012,7 +1013,7 @@
                             <td class="tdc"><b>Selo</b></td>
                             <td class="tdc">
                             
-                                    <input type="text" name="Selo"  maxlength="9" id="Selo" class="Selo" autocomplete="off" required>
+                                    <input type="text" name="Selo"  maxlength="12" id="Selo" class="Selo" autocomplete="off" oninput=" formatarSelo(this)"required>
                             </td>  
                     </tr>
         
@@ -1072,7 +1073,7 @@
         
         </table>
               
-            <label class="LabelObservacao">Obseração:</label>
+            <label class="LabelObservacao">Observação:</label>
             <textarea id="OBS" name="OBS"  maxlength="298" class="OBS"required autocomplete="off"></textarea>
 
  
@@ -1090,7 +1091,7 @@
                    
                         <div class="DivDescr">
                             <label class="LabelDescr">Descrição:</label>
-                            <textarea id="1Descr"  maxlength="43" name="1Descr"  class="Descr"required autocomplete="off"></textarea>                 
+                            <textarea id="1Descr"  maxlength="43" name="1Descr"  resize: none class="Descr"required autocomplete="off"></textarea>                 
                     </div>
                         
             </div>
@@ -1325,7 +1326,7 @@
             <p class="PAssTecnico">Assinatura do Técnico</p>
         </div>
     
-    <!--
+    
         <div class="DivNomeTecnico">
             <label class="LabelNomeTecnico">Nome Técnico:
                 <input type="text" name="NomeTecnico" id="NomeTecnico" class="NomeTecnico" autocomplete="off" required>
@@ -1334,10 +1335,10 @@
     
         <div class="DivRGTecnico">
             <label class="LabelRGTecnico">RG Técnico:
-                <input type="text" name="RGTecnico" id="RGTecnico" class="RGTecnico" autocomplete="off" required>
+                <input type="text" name="RGTecnico" id="RGTecnico" class="RGTecnico" autocomplete="off"  maxlength="13" oninput=" formatarRg(this)"  required>
             </label>
         </div>
-    -->
+    
         <div class="signature-container">
             <canvas id="signature-pad-technician"></canvas>
             <button class="BotaoLimparAssTecnico" id="clear-technician">Limpar</button>
@@ -1412,7 +1413,7 @@
     LabelCNPJ = LabelCNPJ.replace(/(\d{2})(\d)/, '$1.$2'); // Adiciona o primeiro ponto
     LabelCNPJ = LabelCNPJ.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o segundo ponto
     LabelCNPJ = LabelCNPJ.replace(/(\d{3})(\d)/, '$1/$2'); // Adiciona a barra
-    LabelCNPJ= LabelCNPJ.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
+    LabelCNPJ = LabelCNPJ.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
   }
 
   // Limita a entrada a 18 caracteres (incluindo formatação)
@@ -1423,6 +1424,62 @@
   // Atualiza o valor no campo
   campo.value = LabelCNPJ;
 }
+
+ //-----------------------------------------------------------------Tratamento do Selo
+//29.613.456-7
+ function formatarSelo(campo){
+
+let LabelSelo = campo.value.replace(/\D/g, '');
+
+if(LabelSelo.length <= 12){
+    LabelSelo = LabelSelo.replace(/(\d{2})(\d)/, '$1.$2');//Primeiro Ponto 
+    LabelSelo = LabelSelo.replace(/(\d{3})(\d)/, '$1.$2');//Segundo Ponto 
+    LabelSelo = LabelSelo.replace(/(\d{3})(\d)/, '$1-$2');// Adc -  
+}
+
+    if(LabelSelo.length > 12){
+        LabelSelo = LabelSelo.substring(0,12);
+    }
+    campo.value = LabelSelo;
+ }
+
+//------------------------------------------------------Tratamento do I.E (isncrição)
+//123.345.567-124
+function formatarIe(campo){
+
+let LabelIe = campo.value.replace(/\D/g, '');
+
+if(LabelIe.length <= 16){
+    LabelIe = LabelIe.replace(/(\d{3})(\d)/, '$1.$2');//Primeiro Ponto 
+    LabelIe = LabelIe.replace(/(\d{3})(\d)/, '$1.$2');//Segundo Ponto 
+    LabelIe = LabelIe.replace(/(\d{3})(\d)/, '$1-$2');// Adc -  
+}
+
+if(LabelIe.length > 15){
+    LabelIe = LabelIe.substring(0,15);
+}
+ campo.value = LabelIe;
+}
+
+
+//------------------------------------------------------Tratamento RG
+//123.345.567-1
+function formatarRg(campo){
+
+let LabelRg = campo.value.replace(/\D/g, '');
+
+if(LabelRg.length <= 13){
+    LabelRg = LabelRg.replace(/(\d{2})(\d)/, '$1.$2');//Primeiro Ponto 
+    LabelRg = LabelRg.replace(/(\d{3})(\d)/, '$1.$2');//Segundo Ponto 
+    LabelRg = LabelRg.replace(/(\d{3})(\d)/, '$1-$2');// Adc -  
+}
+
+if(LabelRg.length > 13){
+    LabelRg = LabelRg.substring(0,13);
+}
+ campo.value = LabelRg;
+}
+
 
 
 
@@ -1768,6 +1825,8 @@ function formatarTelefone(campo) {
             const quantcelula = document.getElementById('QuantCelula').value  || '';
             const modcelula = document.getElementById('ModCelula').value  || '';
             const observacao = document.getElementById('OBS').value || '';
+            const NomeTecnico = document.getElementById('NomeTecnico').value||'';
+            const RGTecnico = document.getElementById('RGTecnico').value||'';
 
 
 
@@ -2349,8 +2408,7 @@ if (valorU10F) {
 
             
             
-//------------const NomeTecnico = document.getElementById('NomeTecnico').value||'';
-//------------const RGTecnico = document.getElementById('RGTecnico').value||'';
+
 
 
 //----------------------------Somas das quantidades * valores inutarios
@@ -2583,22 +2641,22 @@ console.log(dataFormatada);
             doc.setFontSize(10); 
             doc.setFont('helvetica', 'italic');
             doc.setTextColor(0, 0, 0);
-            doc.text(`CNPJ:21.060.339/0001-53 I.E :647.728.123.117`,  67, 18)
+            doc.text(`CNPJ:00.000.000/0000-00 I.E :000.000.000.000`,  67, 18)
 
             //Endereço
             doc.setFontSize(8)
             doc.setFont('helvetica', 'bold')
-            doc.text(`Rua:Manuel Pires da Silva, 574-CEP 15.082-120/São José do Rio Preto/SP`, 57,22)
+            doc.text(`Rua:Desenvolvimento Teste, 000-CEP 00.000-000/Base Teste/SP`, 57,22)
 
             //Contato 
             doc.setFontSize(12)
             doc.setFont('helvetica', 'bold');
-            doc.text(`Rodrigo:(17)99641-6580  Elizangela:(17)99662-8106`,55,27)
+            doc.text(`Victor:(17)99753-9595  Tècnico:(11)11111-1111`,55,27)
 
             //E-mail 
             doc.setFontSize(11)
             doc.setFont('helvetica','normal')
-            doc.text(`   E-mail:wrbalancas@gmail.com      Skype:grigoleto0803`,58,32)
+            doc.text(`E-mail:teste@gmail.com               Skype:teste25698`,62,32)
 
             //Dados Cliente
             doc.setFontSize(18)
@@ -3408,15 +3466,15 @@ console.log(dataFormatada);
             doc.text(`Técnico:`, 16, 268)
             doc.setFontSize(13)
             doc.setFont('helvetica', 'normal')
-            doc.text(`Rodrigo Grigoleto`, 35, 268)
+            doc.text(`${NomeTecnico}`, 35, 268)
 
             //RG tecnico 
             doc.setFontSize(13)
             doc.setFont('helvetica', 'bold')
-            doc.text(`RG:`, 75,268)
+            doc.text(`RG Técnico:`, 137,268)
             doc.setFontSize(13)
             doc.setFont('helvetica', 'normal')
-            doc.text(`45268098-0`, 84,268)
+            doc.text(`${RGTecnico}`, 165,268)
 
             //Ass tecnico
             doc.setFontSize(13);
@@ -3463,13 +3521,22 @@ console.log(dataFormatada);
         // Função para gerar o PDF e fazer o download
         document.getElementById('generate-pdf').addEventListener('click', function () {
             const doc = generatePDF();
-            doc.save("Orgdem de Serviço.pdf");
+            doc.save("Ordem de Serviço.pdf");
         });
     
         // Função para visualizar o PDF
         document.getElementById('preview-pdf').addEventListener('click', function () {
-            const doc = generatePDF();
-            doc.output('dataurlnewwindow');
-        });
+    const doc = generatePDF();
+    const blobUrl = doc.output('bloburl');
+    
+    // Abre o PDF em uma nova aba
+    const newWindow = window.open(blobUrl, '_blank');
+    
+    // Define o título da nova aba (nem todos os navegadores suportam isso)
+    if (newWindow) {
+        newWindow.document.title = "Ordem de Serviço";
+    }
+});
     </script>
+    
     
